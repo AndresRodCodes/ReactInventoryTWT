@@ -1,11 +1,11 @@
-import {useState} from "react";
+import { useState } from "react";
 
 function AddItem(props) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [type, setType] = useState("");
   const [brand, setBrand] = useState("");
-  
+
   function addItemButtonPressed() {
     props.addItem({ name: name, price: price, type: type, brand: brand });
     setName("");
@@ -14,20 +14,48 @@ function AddItem(props) {
     setBrand("");
   }
 
-  return(
+  return (
     <div>
-      <h2>Add An Item</h2>
-      <form>
+      <div className="row">
+        <h2>Add An Item</h2>
+      </div>
+      <div className="row">
         <label htmlFor="name-field">Name: </label>
-        <input id="name-field" type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
+        <input
+          id="name-field"
+          className="form-control"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        ></input>
         <label htmlFor="price-field">Price: </label>
-        <input id="price-field" type="number" value={price} onChange={(e) => setPrice(e.target.value)}></input>
+        <input
+          id="price-field"
+          className="form-control"
+          type="number"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        ></input>
         <label htmlFor="type-field">Type: </label>
-        <input id="type-field" type="text" value={type} onChange={(e) => setType(e.target.value)}></input>
+        <input
+          id="type-field"
+          className="form-control"
+          type="text"
+          value={type}
+          onChange={(e) => setType(e.target.value)}
+        ></input>
         <label htmlFor="brand-field">Brand: </label>
-        <input id="brand-field" type="text" value={brand} onChange={(e) => setBrand(e.target.value)}></input>
-        <button type="button" onClick={addItemButtonPressed}>Add Item</button>
-      </form>
+        <input
+          id="brand-field"
+          className="form-control"
+          type="text"
+          value={brand}
+          onChange={(e) => setBrand(e.target.value)}
+        ></input>
+        <button type="button" className="btn btn-primary mt-3" onClick={addItemButtonPressed}>
+          Add Item
+        </button>
+      </div>
     </div>
   );
 }
