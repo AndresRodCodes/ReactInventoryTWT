@@ -1,26 +1,26 @@
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-light container-fluid">
-      <ul className="nav flex-column">
+    <nav className="navbar navbar-light">
+      <ul className="nav flex-column w-100">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">
+          <button type="button" className="w-100 btn btn-lg">
             Inventory
-          </a>
+          </button>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
+          <button type="button" className="w-100 btn btn-lg">
             Add Item
-          </a>
+          </button>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
+          <button type="button" className="w-100 btn btn-lg">
             Import Data
-          </a>
+          </button>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#" tabindex="-1" aria-disabled="true">
+          <button type="button" className="w-100 btn btn-lg">
             Export Data
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
