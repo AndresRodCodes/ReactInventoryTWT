@@ -3,17 +3,18 @@ import SearchBar from "./SearchBar";
 import { useState, useEffect } from "react";
 import AddItem from "./AddItem";
 import ItemsDisplay from "./ItemsDisplay";
+import Navbar from "./Navbar";
+import TopNavbar from "./TopNavbar";
 
 function App() {
   const [filters, setfilters] = useState({});
   const [items, setItems] = useState({ items: [] });
-  const jsonServerDB = "http://localhost:3000/items";
+  const jsonServerDB = "http://localhost:3001/items";
 
   useEffect(() => {
     fetch(jsonServerDB)
       .then((response) => response.json())
-      .then((data) => 
-        setItems({ items: data }));
+      .then((data) => setItems({ items: data }));
   }, []);
 
   const updateFilters = (searchParams) => {
@@ -43,7 +44,7 @@ function App() {
   const deleteItem = (item) => {
     const itemsList = items["items"];
     const requestOptions = {
-      method : "DELETE"
+      method: "DELETE",
     };
     fetch(jsonServerDB + `/${item.id}`, requestOptions).then((response) => {
       if (response.ok) {
@@ -51,7 +52,7 @@ function App() {
         itemsList.splice(index, 1);
         setItems({ items: itemsList });
       }
-    })
+    });
   };
 
   const filterItems = (data) => {
@@ -82,15 +83,31 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div className="container-fluid mt-2">
       <div className="row">
-        <SearchBar updateSearchParams={updateFilters} />
-      </div>
-      <div className="row mt-3">
-        <AddItem addItem={addItemData} />
-      </div>
-      <div className="row">
-        <ItemsDisplay items={filterItems(items["items"])} deleteItem={deleteItem} />
+        <div className="col-lg-2 col-md-2 col-sm-2 pt-5 mt-2">
+          <Navbar />
+        </div>
+
+        <div className="col">
+          <div className="row">
+            <TopNavbar />
+          </div>
+          <div className="container mt-3">
+            <div className="row">
+              <SearchBar updateSearchParams={updateFilters} />
+            </div>
+            <div className="row mt-3">
+              <AddItem addItem={addItemData} />
+            </div>
+            <div className="row">
+              <ItemsDisplay
+                items={filterItems(items["items"])}
+                deleteItem={deleteItem}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

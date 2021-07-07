@@ -64,9 +64,13 @@ function SearchBar(props) {
       </div>
       <div className="row mt-3">
         <div className="col-4"></div>
-          <button className="btn btn-primary col-4" type="button" onClick={searchButtonPressed}>
-            Search
-          </button>
+        <button
+          className="btn btn-primary col-4"
+          type="button"
+          onClick={searchButtonPressed}
+        >
+          Search
+        </button>
       </div>
     </div>
   );
