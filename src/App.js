@@ -88,7 +88,6 @@ function App() {
         <div className="col-lg-2 col-md-2 col-sm-2 pt-5 mt-2">
           <Navbar />
         </div>
-
         <div className="col">
           <div className="row">
             <TopNavbar />
