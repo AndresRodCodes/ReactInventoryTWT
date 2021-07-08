@@ -31,7 +31,6 @@ function App() {
   };
 
   const updateTab = (selectedTab) => {
-    console.log(selectedTab);
     setTab(selectedTab);
   };
 
