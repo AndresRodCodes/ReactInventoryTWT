@@ -27,6 +27,20 @@
       "type": "nice",
       "brand": "the best",
       "id": 7
+    },
+    {
+      "name": "",
+      "price": 0,
+      "type": "",
+      "brand": "",
+      "id": 8
+    },
+    {
+      "name": "New item",
+      "price": "3",
+      "type": "big",
+      "brand": "lego",
+      "id": 9
     }
   ]
 }

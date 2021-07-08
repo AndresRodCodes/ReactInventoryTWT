@@ -7,8 +7,17 @@ import Navbar from "./Navbar";
 import TopNavbar from "./TopNavbar";
 
 function App() {
+  const tabs = {
+    Inventory: "inventory",
+    AddItem: "addItem",
+    ImportData: "importData",
+    ExportData: "exportData",
+  };
+
   const [filters, setfilters] = useState({});
   const [items, setItems] = useState({ items: [] });
+  const [tab, setTab] = useState(tabs.Inventory);
+
   const jsonServerDB = "http://localhost:3001/items";
 
   useEffect(() => {
@@ -19,6 +28,11 @@ function App() {
 
   const updateFilters = (searchParams) => {
     setfilters(searchParams);
+  };
+
+  const updateTab = (selectedTab) => {
+    console.log(selectedTab);
+    setTab(selectedTab);
   };
 
   const addItemData = (item) => {
@@ -86,7 +100,7 @@ function App() {
     <div className="container-fluid mt-2">
       <div className="row">
         <div className="col-lg-2 col-md-2 col-sm-2 pt-5 mt-2">
-          <Navbar />
+          <Navbar updateSelectedTab={updateTab} tabOptions={tabs} />
         </div>
         <div className="col">
           <div className="row">
@@ -94,16 +108,24 @@ function App() {
           </div>
           <div className="container mt-3">
             <div className="row">
-              <SearchBar updateSearchParams={updateFilters} />
+              {tab === tabs.Inventory ? (
+                <SearchBar updateSearchParams={updateFilters} />
+              ) : (
+                ""
+              )}
             </div>
             <div className="row mt-3">
-              <AddItem addItem={addItemData} />
+              {tab === tabs.AddItem ? <AddItem addItem={addItemData} /> : ""}
             </div>
             <div className="row">
-              <ItemsDisplay
-                items={filterItems(items["items"])}
-                deleteItem={deleteItem}
-              />
+              {tab === tabs.Inventory ? (
+                <ItemsDisplay
+                  items={filterItems(items["items"])}
+                  deleteItem={deleteItem}
+                />
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
