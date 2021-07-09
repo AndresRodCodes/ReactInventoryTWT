@@ -5,6 +5,7 @@ import AddItem from "./AddItem";
 import ItemsDisplay from "./ItemsDisplay";
 import Navbar from "./Navbar";
 import TopNavbar from "./TopNavbar";
+import ImportData from "./ImportData";
 
 function App() {
   const tabs = {
@@ -133,6 +134,7 @@ function App() {
                 ""
               )}
             </div>
+            {tab === tabs.ImportData ? <ImportData /> : ""}
           </div>
         </div>
       </div>
