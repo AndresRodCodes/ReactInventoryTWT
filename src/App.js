@@ -55,6 +55,13 @@ function App() {
   };
 
   const deleteItem = (item) => {
+    let deleteItemConfirm = window.confirm(
+      `Are you sure you'd like to delete this item?\nItem name: ${item.name}`
+    );
+    if (!deleteItemConfirm) {
+      return;
+    }
+
     const itemsList = items["items"];
     const requestOptions = {
       method: "DELETE",

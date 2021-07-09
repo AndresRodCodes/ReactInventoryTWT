@@ -1,39 +1,25 @@
 {
   "items": [
     {
-      "name": "Andres Rodriguez",
-      "price": 0,
-      "type": "nice",
-      "brand": "nike",
-      "id": 2
-    },
-    {
-      "name": "Andres Rodriguez",
-      "price": 0,
-      "type": "nice",
-      "brand": "the best",
-      "id": 5
-    },
-    {
-      "name": "Andres Rodriguez",
-      "price": 0,
-      "type": "nice",
-      "brand": "the best",
-      "id": 6
-    },
-    {
-      "name": "Andres Rodriguez",
-      "price": "2",
-      "type": "nice",
-      "brand": "the best",
-      "id": 7
-    },
-    {
       "name": "New item",
       "price": "3",
       "type": "big",
       "brand": "lego",
       "id": 9
+    },
+    {
+      "name": "Banana",
+      "price": "3",
+      "type": "food",
+      "brand": "Trader Joes",
+      "id": 10
+    },
+    {
+      "name": "iPad",
+      "price": "199",
+      "type": "iPad",
+      "brand": "Apple",
+      "id": 11
     }
   ]
 }
