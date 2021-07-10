@@ -134,7 +134,7 @@ function App() {
                 ""
               )}
             </div>
-            {tab === tabs.ImportData ? <ImportData /> : ""}
+            {tab === tabs.ImportData ? <ImportData items={items} /> : ""}
           </div>
         </div>
       </div>
