@@ -3,6 +3,7 @@ import xlsx from "xlsx";
 
 const ImportData = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [importedData, setImportedData] = useState([{}]);
 
   const importData = (selectedFile) => {
     if (!selectedFile) return;
@@ -13,12 +14,11 @@ const ImportData = () => {
       let data = e.target.result;
       let workbook = xlsx.read(data, { type: "binary" });
       console.log(workbook);
+      // Loop through each row in excel sheet
       workbook.SheetNames.forEach((sheet) => {
-        let rowObjects = xlsx.utils.sheet_to_row_object_array(
-          workbook.Sheets[sheet]
-        );
-        console.log(rowObjects);
-        console.log(JSON.stringify(rowObjects, undefined, 2));
+        let rowObjects = xlsx.utils.sheet_to_json(workbook.Sheets[sheet]);
+        setImportedData(rowObjects);
+        console.log(JSON.stringify(importedData, undefined, 2));
       });
     };
   };
