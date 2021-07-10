@@ -1,4 +1,5 @@
 import { useState } from "react";
+import xlsx from "xlsx";
 
 const ImportData = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -9,7 +10,16 @@ const ImportData = () => {
     let fileReader = new FileReader();
     fileReader.readAsBinaryString(selectedFile);
     fileReader.onload = (e) => {
-      console.log(e.target.result);
+      let data = e.target.result;
+      let workbook = xlsx.read(data, { type: "binary" });
+      console.log(workbook);
+      workbook.SheetNames.forEach((sheet) => {
+        let rowObjects = xlsx.utils.sheet_to_row_object_array(
+          workbook.Sheets[sheet]
+        );
+        console.log(rowObjects);
+        console.log(JSON.stringify(rowObjects, undefined, 2));
+      });
     };
   };
 
