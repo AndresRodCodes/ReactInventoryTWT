@@ -55,6 +55,16 @@ function App() {
       });
   };
 
+  const addItemsToInventory = (importedItems) => {
+    let shouldImportData = window.confirm(
+      "Are you sure you'd like to add these items to the database?"
+    );
+    if (!shouldImportData) return;
+
+    console.log(importedItems);
+    importedItems.forEach((importedItem) => addItemData(importedItem));
+  };
+
   const deleteItem = (item) => {
     let deleteItemConfirm = window.confirm(
       `Are you sure you'd like to delete this item?\nItem name: ${item.name}`
@@ -134,7 +144,11 @@ function App() {
                 ""
               )}
             </div>
-            {tab === tabs.ImportData ? <ImportData items={items} /> : ""}
+            {tab === tabs.ImportData ? (
+              <ImportData addImportedItems={addItemsToInventory} />
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

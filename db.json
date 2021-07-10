@@ -20,6 +20,34 @@
       "type": "iPad",
       "brand": "Apple",
       "id": 11
+    },
+    {
+      "name": "Apple",
+      "price": 2,
+      "type": "food",
+      "brand": "super",
+      "id": 12
+    },
+    {
+      "name": "Pear",
+      "price": 3,
+      "type": "food",
+      "brand": "market",
+      "id": 13
+    },
+    {
+      "name": "Android",
+      "price": 4,
+      "type": "mobile",
+      "brand": "Samsung",
+      "id": 14
+    },
+    {
+      "name": "Surface Pro 4",
+      "price": 5,
+      "type": "Laptop",
+      "brand": "Microsoft",
+      "id": 15
     }
   ]
 }

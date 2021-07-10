@@ -1,7 +1,7 @@
 import { useState } from "react";
 import xlsx from "xlsx";
 
-const ImportData = ({ items }) => {
+const ImportData = ({ addImportedItems }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [importedData, setImportedData] = useState([{}]);
 
@@ -19,9 +19,9 @@ const ImportData = ({ items }) => {
   const onFileSelected = (excelFile) => {
     setSelectedFile(excelFile);
     importData(excelFile);
-    console.log(importedData);
   };
 
+  // Use xlsx to import excel data as objects
   const importData = (selectedFile) => {
     if (!selectedFile) return;
 
@@ -30,27 +30,12 @@ const ImportData = ({ items }) => {
     fileReader.onload = (e) => {
       let data = e.target.result;
       let workbook = xlsx.read(data, { type: "binary" });
-      console.log(workbook);
       // Loop through each row in excel sheet
       workbook.SheetNames.forEach((sheet) => {
         let rowObjects = xlsx.utils.sheet_to_json(workbook.Sheets[sheet]);
         setImportedData(rowObjects);
-        console.log(JSON.stringify(importedData, undefined, 2));
       });
     };
-  };
-
-  const importDataToDatabase = () => {
-    let shouldImportData = window.confirm(
-      "Are you sure you'd like to add these items to the database?"
-    );
-
-    if (shouldImportData) {
-      let allItems = items["items"];
-      console.log(allItems);
-      importedData.forEach((item) => allItems.push(item));
-      console.log(allItems);
-    }
   };
 
   return (
@@ -72,7 +57,7 @@ const ImportData = ({ items }) => {
           <button
             className={`btn btn-primary ${!selectedFile ? "disabled" : ""}`}
             type="button"
-            onClick={() => importDataToDatabase()}
+            onClick={() => addImportedItems(importedData)}
           >
             Import Data to Database
           </button>
