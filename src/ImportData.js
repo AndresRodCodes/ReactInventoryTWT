@@ -3,7 +3,7 @@ import xlsx from "xlsx";
 
 const ImportData = ({ addImportedItems }) => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [importedData, setImportedData] = useState([{}]);
+  const [importedData, setImportedData] = useState([]);
 
   const showImportedItem = (importedItem) => {
     return (
@@ -78,7 +78,11 @@ const ImportData = ({ addImportedItems }) => {
                   <th scope="col">Brand</th>
                 </tr>
               </thead>
-              <tbody>{importedData.map(showImportedItem)}</tbody>
+              <tbody>
+                {importedData.length > 0
+                  ? importedData.map(showImportedItem)
+                  : "Choose a file to show its items"}
+              </tbody>
             </table>
           </div>
         </div>
