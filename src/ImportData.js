@@ -79,9 +79,13 @@ const ImportData = ({ addImportedItems }) => {
                 </tr>
               </thead>
               <tbody>
-                {importedData.length > 0
-                  ? importedData.map(showImportedItem)
-                  : "Choose a file to show its items"}
+                {importedData.length > 0 ? (
+                  importedData.map(showImportedItem)
+                ) : (
+                  <tr>
+                    <td>Choose a file to show its items</td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
