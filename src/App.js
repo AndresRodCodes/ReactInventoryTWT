@@ -123,7 +123,7 @@ function App() {
           <div className="row">
             <TopNavbar />
           </div>
-          <div className="container mt-3">
+          <div className="container-fluid mt-3">
             <div className="row">
               {tab === tabs.Inventory ? (
                 <SearchBar updateSearchParams={updateFilters} />
