@@ -6,6 +6,8 @@ import ItemsDisplay from "./ItemsDisplay";
 import Navbar from "./Navbar";
 import TopNavbar from "./TopNavbar";
 import ImportData from "./ImportData";
+import ExportData from "./ExportData";
+import xlsx from "xlsx";
 
 function App() {
   const tabs = {
@@ -63,6 +65,25 @@ function App() {
 
     console.log(importedItems);
     importedItems.forEach((importedItem) => addItemData(importedItem));
+  };
+
+  const exportDataAsExcel = () => {
+    const EXCEL_TYPE =
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset-UTF-8";
+    const EXCEL_EXTENSION = ".xlsx";
+
+    const worksheet = xlsx.utils.json_to_sheet(items["items"]);
+    const workbook = {
+      Sheets: {
+        items: worksheet,
+      },
+      SheetNames: ["items"],
+    };
+    const excelBuffer = xlsx.write(workbook, {
+      bookType: "xlsx",
+      type: "array",
+    });
+    console.log(excelBuffer);
   };
 
   const deleteItem = (item) => {
@@ -149,6 +170,13 @@ function App() {
             ) : (
               ""
             )}
+            <div>
+              {tab === tabs.ExportData ? (
+                <ExportData exportData={exportDataAsExcel} />
+              ) : (
+                ""
+              )}
+            </div>
           </div>
         </div>
       </div>
