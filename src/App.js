@@ -8,6 +8,7 @@ import TopNavbar from "./TopNavbar";
 import ImportData from "./ImportData";
 import ExportData from "./ExportData";
 import xlsx from "xlsx";
+import { saveAs } from "file-saver";
 
 function App() {
   const tabs = {
@@ -83,7 +84,14 @@ function App() {
       bookType: "xlsx",
       type: "array",
     });
-    console.log(excelBuffer);
+
+    const filename = "myFile";
+
+    const excelData = new Blob([excelBuffer], { type: EXCEL_TYPE });
+    saveAs(
+      excelData,
+      filename + "_export_" + new Date().getTime() + EXCEL_EXTENSION
+    );
   };
 
   const deleteItem = (item) => {
