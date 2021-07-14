@@ -39,7 +39,7 @@ const ImportData = ({ addImportedItems }) => {
   };
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row d-flex align-items-end">
         <div className="col-6">
           <label htmlFor="fileImport" className="form-label">
