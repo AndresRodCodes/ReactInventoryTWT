@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createItem } from "./actions/items";
 
 function AddItem(props) {
   const [name, setName] = useState("");
@@ -6,12 +8,19 @@ function AddItem(props) {
   const [type, setType] = useState("");
   const [brand, setBrand] = useState("");
 
+  const dispatch = useDispatch();
+
   function addItemButtonPressed() {
     props.addItem({ name: name, price: price, type: type, brand: brand });
     setName("");
     setPrice(0);
     setType("");
     setBrand("");
+
+    // Create item in MongoDB
+    dispatch(
+      createItem({ name: name, price: price, type: type, brand: brand })
+    );
   }
 
   return (
@@ -52,7 +61,11 @@ function AddItem(props) {
           value={brand}
           onChange={(e) => setBrand(e.target.value)}
         ></input>
-        <button type="button" className="btn btn-primary mt-3" onClick={addItemButtonPressed}>
+        <button
+          type="button"
+          className="btn btn-primary mt-3"
+          onClick={addItemButtonPressed}
+        >
           Add Item
         </button>
       </div>

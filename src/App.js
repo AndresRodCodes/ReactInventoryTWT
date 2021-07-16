@@ -10,7 +10,15 @@ import ExportData from "./ExportData";
 import xlsx from "xlsx";
 import { saveAs } from "file-saver";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getItems } from "./actions/items";
+
 function App() {
+  const dispatch = useDispatch();
+  const mongoItems = useSelector((state) => state.items);
+
+  console.log(mongoItems);
+
   const tabs = {
     Inventory: "inventory",
     AddItem: "addItem",
@@ -24,11 +32,13 @@ function App() {
 
   const jsonServerDB = "http://localhost:3001/items";
 
+  // On application load
   useEffect(() => {
+    dispatch(getItems());
     fetch(jsonServerDB)
       .then((response) => response.json())
       .then((data) => setItems({ items: data }));
-  }, []);
+  }, [dispatch]);
 
   const updateFilters = (searchParams) => {
     setfilters(searchParams);
@@ -64,7 +74,6 @@ function App() {
     );
     if (!shouldImportData) return;
 
-    console.log(importedItems);
     importedItems.forEach((importedItem) => addItemData(importedItem));
   };
 

@@ -48,6 +48,20 @@
       "type": "Laptop",
       "brand": "Microsoft",
       "id": 15
+    },
+    {
+      "name": "Bottle",
+      "price": "6",
+      "type": "Insulated",
+      "brand": "Hydro Flask",
+      "id": 16
+    },
+    {
+      "name": "andres",
+      "price": "3",
+      "type": "nice",
+      "brand": "the best",
+      "id": 17
     }
   ]
 }
