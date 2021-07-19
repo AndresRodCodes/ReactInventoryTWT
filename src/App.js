@@ -1,4 +1,3 @@
-import "./App.css";
 import SearchBar from "./SearchBar";
 import { useState, useEffect } from "react";
 import AddItem from "./AddItem";
