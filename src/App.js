@@ -1,11 +1,11 @@
-import SearchBar from "./SearchBar";
+import SearchBar from "./components/SearchBar";
 import { useState, useEffect } from "react";
-import AddItem from "./AddItem";
-import ItemsDisplay from "./ItemsDisplay";
-import Navbar from "./Navbar";
-import TopNavbar from "./TopNavbar";
-import ImportData from "./ImportData";
-import ExportData from "./ExportData";
+import AddItem from "./components/AddItem";
+import ItemsDisplay from "./components/ItemsDisplay";
+import Navbar from "./components/Navbar";
+import TopNavbar from "./components/TopNavbar";
+import ImportData from "./components/ImportData";
+import ExportData from "./components/ExportData";
 import xlsx from "xlsx";
 import { saveAs } from "file-saver";
 

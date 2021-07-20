@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createItem } from "./actions/items";
+import { createItem } from "../actions/items";
 
 function AddItem(props) {
   const [name, setName] = useState("");
