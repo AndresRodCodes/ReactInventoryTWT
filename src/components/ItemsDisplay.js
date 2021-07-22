@@ -2,7 +2,7 @@ function ItemsDisplay({ items, deleteItem }) {
   const showItem = (item) => {
     return (
       <tr>
-        <th>{item.id}</th>
+        <th>{item._id}</th>
         <td>{item.name}</td>
         <td>{item.price}</td>
         <td>{item.type}</td>
@@ -30,7 +30,7 @@ function ItemsDisplay({ items, deleteItem }) {
               <th scope="col">Price</th>
               <th scope="col">Type</th>
               <th scope="col">Brand</th>
-              <th scope="col">Delete Button</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>{items.map(showItem)}</tbody>

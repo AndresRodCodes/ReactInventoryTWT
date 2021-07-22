@@ -27,15 +27,16 @@ function App() {
   const [items, setItems] = useState({ items: [] });
   const [tab, setTab] = useState(tabs.Inventory);
 
-  const jsonServerDB = "http://localhost:3001/items";
+  // const jsonServerDB = "http://localhost:3001/items";
 
   // On application load
   useEffect(() => {
     dispatch(getItems());
-    fetch(jsonServerDB)
-      .then((response) => response.json())
-      .then((data) => setItems({ items: data }));
-  }, [dispatch]);
+    setItems({ items: mongoItems });
+    // fetch(jsonServerDB)
+    //   .then((response) => response.json())
+    //   .then((data) => setItems({ items: data }));
+  }, [dispatch, mongoItems]);
 
   const updateFilters = (searchParams) => {
     setfilters(searchParams);
@@ -46,23 +47,21 @@ function App() {
   };
 
   const addItemData = (item) => {
-    let currentData = items["items"];
-
-    const fetchOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(item),
-    };
-
-    fetch(jsonServerDB, fetchOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        currentData.push(data);
-        setItems({ items: currentData });
-        console.log(currentData);
-      });
+    // let currentData = items["items"];
+    // const fetchOptions = {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(item),
+    // };
+    // fetch(jsonServerDB, fetchOptions)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     currentData.push(data);
+    //     setItems({ items: currentData });
+    //     console.log(currentData);
+    //   });
   };
 
   const addItemsToInventory = (importedItems) => {
@@ -108,17 +107,18 @@ function App() {
       return;
     }
 
-    const itemsList = items["items"];
-    const requestOptions = {
-      method: "DELETE",
-    };
-    fetch(jsonServerDB + `/${item.id}`, requestOptions).then((response) => {
-      if (response.ok) {
-        const index = itemsList.indexOf(item);
-        itemsList.splice(index, 1);
-        setItems({ items: itemsList });
-      }
-    });
+    // const itemsList = items["items"];
+    // const requestOptions = {
+    //   method: "DELETE",
+    // };
+
+    // fetch(jsonServerDB + `/${item.id}`, requestOptions).then((response) => {
+    //   if (response.ok) {
+    //     const index = itemsList.indexOf(item);
+    //     itemsList.splice(index, 1);
+    //     setItems({ items: itemsList });
+    //   }
+    // });
   };
 
   const filterItems = (data) => {
