@@ -16,8 +16,6 @@ function App() {
   const dispatch = useDispatch();
   const mongoItems = useSelector((state) => state.items);
 
-  console.log(mongoItems);
-
   const tabs = {
     Inventory: "inventory",
     AddItem: "addItem",
@@ -151,7 +149,7 @@ function App() {
   };
 
   return (
-    <div className="container-fluid mt-2">
+    <div className="container mt-2">
       <div className="row">
         <div className="col-lg-2 col-md-2 col-sm-2 pt-5 mt-2">
           <Navbar updateSelectedTab={updateTab} tabOptions={tabs} />
