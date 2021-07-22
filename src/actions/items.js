@@ -1,6 +1,6 @@
 import * as api from "../api";
 
-// Action Creators
+// Item Action Creators
 export const getItems = () => async (dispatch) => {
   try {
     const { data } = await api.fetchItems();
