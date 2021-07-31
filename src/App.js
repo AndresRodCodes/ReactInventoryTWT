@@ -73,6 +73,7 @@ function App() {
     importedItems.forEach((importedItem) => addItemData(importedItem));
   };
 
+  // Exports local item data as and excel file.
   const exportDataAsExcel = () => {
     const EXCEL_TYPE =
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset-UTF-8";
@@ -90,13 +91,10 @@ function App() {
       type: "array",
     });
 
-    const filename = "myFile";
+    const filename = "Item_Inventory_";
 
     const excelData = new Blob([excelBuffer], { type: EXCEL_TYPE });
-    saveAs(
-      excelData,
-      filename + "_export_" + new Date().getTime() + EXCEL_EXTENSION
-    );
+    saveAs(excelData, filename + new Date().getTime() + EXCEL_EXTENSION);
   };
 
   const deleteItem = (item) => {
