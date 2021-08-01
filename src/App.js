@@ -10,7 +10,7 @@ import xlsx from "xlsx";
 import { saveAs } from "file-saver";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getItems } from "./actions/items";
+import { getItems, deleteItem } from "./actions/items";
 
 function App() {
   const dispatch = useDispatch();
@@ -97,13 +97,15 @@ function App() {
     saveAs(excelData, filename + new Date().getTime() + EXCEL_EXTENSION);
   };
 
-  const deleteItem = (item) => {
+  const clickDeleteItem = (item) => {
     let deleteItemConfirm = window.confirm(
       `Are you sure you'd like to delete this item?\nItem name: ${item.name}`
     );
     if (!deleteItemConfirm) {
       return;
     }
+
+    dispatch(deleteItem(item._id));
 
     // const itemsList = items["items"];
     // const requestOptions = {
@@ -171,7 +173,7 @@ function App() {
               {tab === tabs.Inventory ? (
                 <ItemsDisplay
                   items={filterItems(items["items"])}
-                  deleteItem={deleteItem}
+                  deleteItem={clickDeleteItem}
                 />
               ) : (
                 ""
