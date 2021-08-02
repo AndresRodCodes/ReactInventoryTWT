@@ -4,6 +4,10 @@ export default (items = [], action) => {
       return action.payload;
     case "CREATE":
       return [...items, action.payload];
+    case "UPDATE_ITEM":
+      return items.map((item) =>
+        item._id === action.payload._id ? action.payload : item
+      );
     case "DELETE_ITEM":
       return items.filter((item) => item._id !== action.payload);
     default:

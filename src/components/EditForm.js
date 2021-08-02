@@ -1,10 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const EditForm = ({ currentId, setCurrentId }) => {
+  const item = useSelector((state) =>
+    currentId ? state.items.find((p) => p._id === currentId) : null
+  );
+
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [type, setType] = useState("");
   const [brand, setBrand] = useState("");
+
+  useEffect(() => {
+    if (item) {
+      setName(item.name);
+      setPrice(item.price);
+      setType(item.type);
+      setBrand(item.brand);
+    }
+  }, []);
 
   function submitEdit() {
     console.log("Submit edit button pressed");
