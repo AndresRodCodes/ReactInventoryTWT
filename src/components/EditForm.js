@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const EditForm = () => {
+const EditForm = ({ currentId, setCurrentId }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [type, setType] = useState("");
@@ -8,6 +8,10 @@ const EditForm = () => {
 
   function submitEdit() {
     console.log("Submit edit button pressed");
+  }
+
+  function cancelEdit() {
+    setCurrentId(null);
   }
 
   return (
@@ -58,13 +62,21 @@ const EditForm = () => {
         </div>
       </div>
       <div className="row mt-3">
-        <div className="col-4"></div>
+        <div className="col-3"></div>
         <button
-          className="btn btn-primary col-4"
+          className="btn btn-primary col-2"
           type="button"
           onClick={submitEdit}
         >
-          Confirm Edit
+          Confirm
+        </button>
+        <div className="col-2"></div>
+        <button
+          className="btn btn-danger col-2"
+          type="button"
+          onClick={cancelEdit}
+        >
+          Cancel
         </button>
       </div>
     </div>

@@ -146,7 +146,14 @@ function App() {
             <div className="row">
               {tab === tabs.Inventory ? (
                 <div>
-                  {currentId ? <EditForm /> : ""}
+                  {currentId ? (
+                    <EditForm
+                      currentId={currentId}
+                      setCurrentId={setCurrentId}
+                    />
+                  ) : (
+                    ""
+                  )}
                   <ItemsDisplay
                     items={filterItems(items["items"])}
                     deleteItem={clickDeleteItem}
