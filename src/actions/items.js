@@ -21,11 +21,11 @@ export const createItem = (item) => async (dispatch) => {
   }
 };
 
-export const deleteItem = (item) => async (dispatch) => {
+export const deleteItem = (id) => async (dispatch) => {
   try {
-    const { data } = await api.deleteItem(item);
+    await api.deleteItem(id);
 
-    dispatch({ type: "DELETE_ITEM", payload: data });
+    dispatch({ type: "DELETE_ITEM", payload: id });
   } catch (error) {
     console.log(error.message);
   }

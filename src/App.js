@@ -11,6 +11,7 @@ import { saveAs } from "file-saver";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getItems, deleteItem } from "./actions/items";
+import EditForm from "./components/EditForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
     ExportData: "exportData",
   };
 
+  const [currentId, setCurrentId] = useState(null);
   const [filters, setfilters] = useState({});
   const [items, setItems] = useState({ items: [] });
   const [tab, setTab] = useState(tabs.Inventory);
@@ -89,6 +91,10 @@ function App() {
     dispatch(deleteItem(item._id));
   };
 
+  const clickEditItem = (item) => {
+    setCurrentId(item._id);
+  };
+
   const filterItems = (data) => {
     const filteredItems = [];
 
@@ -139,10 +145,14 @@ function App() {
             </div>
             <div className="row">
               {tab === tabs.Inventory ? (
-                <ItemsDisplay
-                  items={filterItems(items["items"])}
-                  deleteItem={clickDeleteItem}
-                />
+                <div>
+                  {currentId ? <EditForm /> : ""}
+                  <ItemsDisplay
+                    items={filterItems(items["items"])}
+                    deleteItem={clickDeleteItem}
+                    editItem={clickEditItem}
+                  />
+                </div>
               ) : (
                 ""
               )}
