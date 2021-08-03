@@ -49,7 +49,7 @@ const EditForm = ({ currentId, setCurrentId }) => {
           ></input>
         </div>
         <div className="col">
-          <label htmlFor="price-field">Max Price: </label>
+          <label htmlFor="price-field">Price: </label>
           <input
             id="price-field"
             className="form-control"
