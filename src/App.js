@@ -98,9 +98,11 @@ function App() {
   const filterItems = (data) => {
     const filteredItems = [];
 
-    if (!filters.name) {
+    if (!filters.name && !filters.price && !filters.type && !filters.brand) {
       return data;
     }
+
+    console.log(filters);
 
     for (const item of data) {
       if (filters.name !== "" && item.name !== filters.name) {
@@ -118,6 +120,7 @@ function App() {
 
       filteredItems.push(item);
     }
+    console.log(filteredItems);
 
     return filteredItems;
   };
