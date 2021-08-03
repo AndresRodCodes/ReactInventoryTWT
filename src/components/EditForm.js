@@ -1,27 +1,31 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { updateItem } from "../actions/items";
+
 const EditForm = ({ currentId, setCurrentId }) => {
   const item = useSelector((state) =>
     currentId ? state.items.find((p) => p._id === currentId) : null
   );
 
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [type, setType] = useState("");
-  const [brand, setBrand] = useState("");
+  const [itemData, setItemData] = useState({
+    name: "",
+    price: 0,
+    type: "",
+    brand: "",
+  });
 
   useEffect(() => {
     if (item) {
-      setName(item.name);
-      setPrice(item.price);
-      setType(item.type);
-      setBrand(item.brand);
+      setItemData(item);
     }
   }, []);
 
+  const dispatch = useDispatch();
+
   function submitEdit() {
-    console.log("Submit edit button pressed");
+    dispatch(updateItem(currentId, itemData));
+    cancelEdit();
   }
 
   function cancelEdit() {
@@ -40,8 +44,8 @@ const EditForm = ({ currentId, setCurrentId }) => {
             id="name-field"
             className="form-control"
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={itemData.name}
+            onChange={(e) => setItemData({ ...itemData, name: e.target.value })}
           ></input>
         </div>
         <div className="col">
@@ -50,8 +54,10 @@ const EditForm = ({ currentId, setCurrentId }) => {
             id="price-field"
             className="form-control"
             type="number"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            value={itemData.price}
+            onChange={(e) =>
+              setItemData({ ...itemData, price: e.target.value })
+            }
           ></input>
         </div>
         <div className="col">
@@ -60,8 +66,8 @@ const EditForm = ({ currentId, setCurrentId }) => {
             id="type-field"
             className="form-control"
             type="text"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
+            value={itemData.type}
+            onChange={(e) => setItemData({ ...itemData, type: e.target.value })}
           ></input>
         </div>
         <div className="col">
@@ -70,8 +76,10 @@ const EditForm = ({ currentId, setCurrentId }) => {
             id="brand-field"
             className="form-control"
             type="text"
-            value={brand}
-            onChange={(e) => setBrand(e.target.value)}
+            value={itemData.brand}
+            onChange={(e) =>
+              setItemData({ ...itemData, brand: e.target.value })
+            }
           ></input>
         </div>
       </div>
