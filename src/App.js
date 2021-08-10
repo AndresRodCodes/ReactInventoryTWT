@@ -2,7 +2,7 @@ import SearchBar from "./components/SearchBar";
 import { useState, useEffect } from "react";
 import AddItem from "./components/AddItem";
 import ItemsDisplay from "./components/ItemsDisplay";
-import Navbar from "./components/Navbar";
+import SideNavbar from "./components/SideNavbar";
 import TopNavbar from "./components/TopNavbar";
 import ImportData from "./components/ImportData";
 import ExportData from "./components/ExportData";
@@ -129,7 +129,7 @@ function App() {
     <div className="container mt-2">
       <div className="row">
         <div className="col-lg-2 col-md-2 col-sm-2 pt-5 mt-2">
-          <Navbar updateSelectedTab={updateTab} tabOptions={tabs} />
+          <SideNavbar updateSelectedTab={updateTab} tabOptions={tabs} />
         </div>
         <div className="col">
           <div className="row">
