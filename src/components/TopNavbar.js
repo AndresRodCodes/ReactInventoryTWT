@@ -1,13 +1,21 @@
+import { Navbar, Nav, Container } from "react-bootstrap";
+
 const TopNavbar = () => {
   return (
-    <div className="border-bottom border-2 pb-2">
-      <div className="container d-flex align-items-center justify-content-between">
-        <h1>School Inventory</h1>
-        <button type="buttton" className="btn btn-primary">
-          Sign In
-        </button>
-      </div>
-    </div>
+    <Navbar collapseOnSelect expand="lg">
+      <Container>
+        <Navbar.Brand>School Inventory</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto"></Nav>
+          <Nav>
+            <button type="button" className="btn btn-primary">
+              Sign In
+            </button>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
