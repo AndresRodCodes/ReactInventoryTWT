@@ -28,11 +28,13 @@ function App() {
   const [filters, setfilters] = useState({});
   const [items, setItems] = useState({ items: [] });
   const [tab, setTab] = useState(tabs.Inventory);
+  const [itemCount, setItemCount] = useState(0);
 
   // On application load
   useEffect(() => {
     dispatch(getItems());
     setItems({ items: mongoItems });
+    setItemCount(items["items"].length);
   }, [dispatch, mongoItems]);
 
   const updateFilters = (searchParams) => {
@@ -174,7 +176,10 @@ function App() {
             )}
             <div>
               {tab === tabs.ExportData ? (
-                <ExportData exportData={exportDataAsExcel} />
+                <ExportData
+                  exportData={exportDataAsExcel}
+                  itemLength={itemCount}
+                />
               ) : (
                 ""
               )}
