@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//const url = "https://school-database-crud.herokuapp.com/items";
-const url = "http://localhost:5000/items";
+const url = "https://school-database-crud.herokuapp.com/items";
+//const url = "http://localhost:5000/items";
 
 // Import to actions
 export const fetchItems = () => axios.get(url);

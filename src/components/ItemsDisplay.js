@@ -2,8 +2,7 @@ function ItemsDisplay({ items, deleteItem, editItem }) {
   const showItem = (item) => {
     return (
       <tr>
-        <th>{item._id}</th>
-        <td>{item.name}</td>
+        <th>{item.name}</th>
         <td>{item.price}</td>
         <td>{item.type}</td>
         <td>{item.brand}</td>
@@ -30,7 +29,6 @@ function ItemsDisplay({ items, deleteItem, editItem }) {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th scope="col">Id</th>
               <th scope="col">Name</th>
               <th scope="col">Price</th>
               <th scope="col">Type</th>
