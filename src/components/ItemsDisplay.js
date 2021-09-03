@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPen } from "@fortawesome/free-solid-svg-icons";
+
 function ItemsDisplay({ items, deleteItem, editItem }) {
   const showItem = (item) => {
     return (
@@ -7,14 +10,18 @@ function ItemsDisplay({ items, deleteItem, editItem }) {
         <td>{item.type}</td>
         <td>{item.brand}</td>
         <td>
-          <button className="btn btn-danger" onClick={() => deleteItem(item)}>
-            Delete
-          </button>
+          <FontAwesomeIcon
+            style={{ cursor: "pointer", color: "red" }}
+            icon={faTrash}
+            onClick={() => deleteItem(item)}
+          />
         </td>
         <td>
-          <button className="btn btn-warning" onClick={() => editItem(item)}>
-            Edit
-          </button>
+          <FontAwesomeIcon
+            style={{ cursor: "pointer", color: "orange" }}
+            icon={faPen}
+            onClick={() => editItem(item)}
+          />
         </td>
       </tr>
     );
